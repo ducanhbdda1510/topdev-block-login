@@ -1,0 +1,41 @@
+{
+    "name": "Anti TopDev Blog",
+    "description": "View Code of TopDev Blog doesn't need to login",
+    "version": "1.0",
+    "action": {
+        "default_icon":  {
+            "16": "./public/i.png",
+            "32": "./public/i.png",
+            "48": "./public/i.png",
+            "128": "./public/i.png"
+        },
+        "default_popup": "./src/popup.html",
+        "default_title": ""
+    },
+    "icons": {
+        "16": "./public/i.png",
+        "32": "./public/i.png",
+        "48": "./public/i.png",
+        "128": "./public/i.png"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "*://topdev.vn/*"
+            ],
+            "js": [
+                "./src/scripts/action.js",
+                "./src/scripts/startup.js",
+                "./src/popup.js"
+            ],
+            "run_at": "document_idle"
+        }
+    ],
+    "web_accessible_resources": [
+        {
+          "resources": ["./src/popup.html","./src/scripts/action.js"],
+          "matches": ["<all_urls>","http://*/*", "https://*/*"]
+        }
+      ],
+    "manifest_version": 3
+}
